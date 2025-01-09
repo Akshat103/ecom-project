@@ -1,0 +1,22 @@
+{
+  "seller": [
+    {
+      "id": "4779",
+      "name": "test1",
+      "email": "test1@test.com",
+      "password": "123456"
+    },
+    {
+      "id": "a1a8",
+      "name": "test1",
+      "email": "test2@test.com",
+      "password": "123455"
+    },
+    {
+      "id": "c6f5",
+      "name": "test1",
+      "email": "akshattamrakar.work@gmail.com",
+      "password": "123456"
+    }
+  ]
+}

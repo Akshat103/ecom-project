@@ -1,0 +1,83 @@
+@import '../../../variables'; 
+
+// Navbar
+.navbar__container {
+    padding: $gap $gap;
+    background: $primary-bg;
+    border-bottom: 2px solid $border-color;
+
+    .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+// Search Bar
+.search__container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    button {
+        border: none;
+        background: $button-bg;
+        color: $button-text-color;
+        padding: $button-padding;
+        border-radius: $button-border-radius;
+        font-size: $font-size;
+        cursor: pointer;
+
+        &:hover {
+            background: $button-hover-bg;
+        }
+    }
+
+    input {
+        border: none;
+        background: $secondary-bg;
+        padding: $button-padding;
+        border-radius: $button-border-radius;
+        font-size: $font-size;
+        cursor: pointer;
+    }
+}
+
+// Menu Styles
+.menu__container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.menu-pages,
+.menu-user-options,
+.menu-cart {
+    display: flex;
+}
+
+.menu-user-options ul,
+.menu-pages ul,
+.menu-cart ul {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.menu-user-options button,
+.menu-cart button {
+    border: 1px solid $border-color;
+    background: rgb(130 202 215);
+    cursor: pointer;
+    padding: $button-padding;
+    color: black;
+    border-radius: $button-border-radius;
+    font-size: $font-size;
+
+    &:hover {
+        background: $button-hover-bg;
+    }
+}
