@@ -10,6 +10,8 @@ import { SellerAuthComponent } from './seller-auth/seller-auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SellerHomeComponent } from './seller-home/seller-home.component';
 import { provideHttpClient } from '@angular/common/http';
+import { SellerProductCategoryComponent } from './components/seller-product-category/seller-product-category.component';
+import { SellerProductListComponent } from './components/seller-product-list/seller-product-list.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { provideHttpClient } from '@angular/common/http';
     HeaderComponent,
     HomeComponent,
     SellerAuthComponent,
-    SellerHomeComponent
+    SellerHomeComponent,
+    SellerProductCategoryComponent,
+    SellerProductListComponent
   ],
   imports: [
     BrowserModule,

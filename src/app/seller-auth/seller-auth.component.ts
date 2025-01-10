@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SellerService } from '../services/seller/seller.service';
 import { Seller } from '../model/seller.model';
 import { DataService } from '../services/data/data.service';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-seller-auth',
@@ -51,12 +52,11 @@ export class SellerAuthComponent {
 
   onSignUpSubmit() {
     if (this.signupForm.valid) {
-      this.sellerService.sellerSignUp(this.signupForm.value).subscribe({
+      this.sellerService.sellerSignUp(this.signupForm.value).pipe(take(1)).subscribe({
         next: (res) => {
           if (res) {
-            this.signupForm.reset();
-            this.loginDataService.setLogInData({ loggedIn: true, seller: true });
-            this.router.navigate(['seller-home']);
+            this.signinForm.reset();
+            this.toggleShowSignUp();
           }
         },
         error: (error) => {
@@ -68,11 +68,12 @@ export class SellerAuthComponent {
 
   onSignInSubmit() {
     if (this.signinForm.valid) {
-      this.sellerService.sellerSignIn(this.signinForm.value).subscribe({
-        next: (res) => {
-          const sellers = res as Seller[];
-          if (sellers.length) {
+      this.sellerService.sellerSignIn(this.signinForm.value).pipe(take(1)).subscribe({
+        next: (res: any) => {
+          if (res.access_token && res.refresh_token) {
             this.signinForm.reset();
+            localStorage.setItem('access_token', res.access_token);
+            localStorage.setItem('refresh_token', res.refresh_token);
             this.loginDataService.setLogInData({ loggedIn: true, seller: true });
             this.router.navigate(['seller-home']);
           } else {
@@ -81,10 +82,7 @@ export class SellerAuthComponent {
         },
         error: (error) => {
           console.error('Signup failed:', error);
-        },
-        complete() {
-
-        },
+        }
       });
     }
   }

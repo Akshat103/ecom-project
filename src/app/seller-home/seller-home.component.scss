@@ -1,0 +1,25 @@
+@import '../../variables'; 
+
+.seller__home__page__container {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem;
+
+    .seller-category-section {
+        max-width: 30%;
+        border: 2px solid $border-color;
+        border-radius: $button-border-radius;
+        padding: 0.5rem;
+        background: $secondary-bg;
+    }
+
+    .seller-product-section {
+        max-width: 70%;
+        border: 2px solid $border-color;
+        border-radius: $button-border-radius;
+        padding: 0.5rem;
+        background: $secondary-bg;
+    }
+
+}
