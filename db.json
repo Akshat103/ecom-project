@@ -17,6 +17,18 @@
       "name": "test1",
       "email": "akshattamrakar.work@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "dd75",
+      "name": "akshat",
+      "email": "akshat@d.com",
+      "password": "qwertyu"
+    },
+    {
+      "id": "2687",
+      "name": "asdf",
+      "email": "awse@gm.com",
+      "password": "asdfgty"
     }
   ]
 }

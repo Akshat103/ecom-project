@@ -1,34 +1,82 @@
-<div class="seller__signup__container">
-    <h2>Seller Sign Up</h2>
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="seller-form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" formControlName="name" placeholder="Enter name">
-            @if (signupForm.get('name')?.invalid && signupForm.get('name')?.touched) {
-            <div class="error">
-                Name is required (min. 3 characters)
+<div>
+    @if (showSignUp()) {
+    <div class="seller__auth__container">
+        <h2>Seller Sign Up</h2>
+        <form [formGroup]="signupForm" (ngSubmit)="onSignUpSubmit()">
+            <div class="seller-form-group">
+                <label for="name">Name</label>
+                <input type="text" id="signup_name" formControlName="name" placeholder="Enter name">
+                @if (signupForm.get('name')?.invalid && signupForm.get('name')?.touched) {
+                <div class="error">
+                    Name is required (min. 3 characters)
+                </div>
+                }
             </div>
-            }
-        </div>
-        <div class="seller-form-group">
-            <label for="email">Email</label>
-            <input type="text" id="email" formControlName="email" placeholder="Enter email">
-            @if (signupForm.get('email')?.invalid && signupForm.get('email')?.touched) {
-            <div class="error">
-                Enter a valid email.
+            <div class="seller-form-group">
+                <label for="email">Email</label>
+                <input type="text" id="signup_email" formControlName="email" placeholder="Enter email">
+                @if (signupForm.get('email')?.invalid && signupForm.get('email')?.touched) {
+                <div class="error">
+                    Enter a valid email.
+                </div>
+                }
             </div>
-            }
-        </div>
-        <div class="seller-form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" formControlName="password" placeholder="******">
-            @if (signupForm.get('password')?.invalid && signupForm.get('password')?.touched) {
-            <div class="error">
-                Password must be at least 6 characters long
+            <div class="seller-form-group">
+                <label for="password">Password</label>
+                <input type="password" id="signup_password" formControlName="password" placeholder="******">
+                @if (signupForm.get('password')?.invalid && signupForm.get('password')?.touched) {
+                <div class="error">
+                    Password must be at least 6 characters long
+                </div>
+                }
             </div>
-            }
-        </div>
 
-        <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
-    </form>
+            <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+            <div class="toggle__form__content">
+                <p>Already a user till now?</p>
+                <span (click)="toggleShowSignUp()">Sign in</span>
+            </div>
+        </form>
+    </div>
+    }@else {
+    <div class="seller__auth__container">
+        <h2>Seller Sign In</h2>
+        <form [formGroup]="signinForm" (ngSubmit)="onSignInSubmit()">
+            <div class="seller-form-group">
+                <label for="email">Email</label>
+                <input type="text" id="signin_email" formControlName="email" placeholder="Enter email">
+                @if (signinForm.get('email')?.invalid && signupForm.get('email')?.touched) {
+                <div class="error">
+                    Enter a valid email.
+                </div>
+                }
+            </div>
+            <div class="seller-form-group">
+                <label for="password">Password</label>
+                <div class="password-container">
+                    <input [type]="isPasswordVisible()?'text':'password'" id="signin_password"
+                        formControlName="password" placeholder="******">
+                    <img [src]="isPasswordVisible()?'/assests/icons/hide-svgrepo-com.svg':'/assests/icons/show-svgrepo-com.svg'"
+                        width="24" height="24" class="toggle-password" (click)="togglePasswordVisibility()">
+                </div>
+                @if (signinForm.get('password')?.invalid && signupForm.get('password')?.touched) {
+                <div class="error">
+                    Password must be at least 6 characters long
+                </div>
+                }
+            </div>
+
+            <button type="submit" [disabled]="signinForm.invalid">Sign in</button>
+
+            @if (showIncorrectDetailsError()) {
+            <span id="signin-incorrect-details-error">Incorrect Email or Password</span>
+            }
+
+            <div class="toggle__form__content">
+                <p>Not a user till now?</p>
+                <span (click)="toggleShowSignUp()">Register Yourself</span>
+            </div>
+        </form>
+    </div>
+    }
 </div>

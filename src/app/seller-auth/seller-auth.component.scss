@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.seller__signup__container {
+.seller__auth__container {
     background: $primary-bg;
     padding: 2rem;
     border-radius: 10px;
@@ -40,6 +40,21 @@
             font-size: 0.85rem;
             margin-top: 0.2rem;
         }
+
+        .password-container {
+            display: flex;
+            align-items:center;
+        }
+
+        .toggle-password {
+            cursor: pointer;
+            margin-left: -30px;
+            font-size: smaller;
+        }
+
+        #signin_password, #signup_password {
+            width: 100%;
+        }
     }
 
     button {
@@ -60,5 +75,21 @@
             background: gray;
             cursor: not-allowed;
         }
+    }
+
+    .toggle__form__content {
+        margin-top: 1rem;
+        font-size: smaller;
+
+        span {
+            text-decoration: underline;
+            color: $button-bg;
+            cursor: pointer;
+        }
+    }
+
+    #signin-incorrect-details-error {
+        font-size: smaller;
+        color: red;
     }
 }

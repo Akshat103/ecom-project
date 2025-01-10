@@ -1,5 +1,5 @@
 export interface Seller {
-    name: string,
+    name?: string,
     email: string,
-    passowrd: string
+    password: string
 }
