@@ -1,0 +1,159 @@
+@import '../../../variables';
+
+// Mixins for common styles
+@mixin button-base {
+    padding: $button-padding;
+    border-radius: $button-border-radius;
+    border: none;
+    cursor: pointer;
+    flex: 1;
+    color: $button-text-color;
+    transition: background-color 0.2s ease;
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}
+
+@mixin form-input {
+    width: 100%;
+    padding: $button-padding;
+    border: 1px solid $border-color;
+    border-radius: $button-border-radius;
+    font-size: $font-size;
+    transition: border-color 0.2s ease;
+}
+
+// Main container
+.category-section {
+    padding: $gap;
+    background-color: $primary-bg;
+
+    // Header section
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $gap;
+
+        .search-container {
+            flex: 1;
+            max-width: 400px;
+            margin-right: $gap;
+
+            input {
+                @include form-input;
+            }
+        }
+
+        .create-btn {
+            @include button-base;
+            background-color: $button-bg;
+
+            &:hover:not(:disabled) {
+                background-color: $button-hover-bg;
+            }
+        }
+    }
+
+    // Form styles
+    .form-group {
+        margin-bottom: 1rem;
+
+        input {
+            @include form-input;
+
+            &.ng-invalid.ng-touched {
+                border-color: #dc3545;
+            }
+        }
+    }
+
+    .error-message {
+        color: #dc3545;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: block;
+    }
+
+    // Categories grid
+    .categories-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: $gap;
+    }
+
+    // Category card styles
+    .category-card {
+        background-color: $secondary-bg;
+        border-radius: $button-border-radius;
+        padding: $gap;
+
+        img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: $button-border-radius;
+            margin-bottom: $gap;
+        }
+    }
+
+    // Forms
+    .create-form,
+    .edit-form {
+        background-color: $secondary-bg;
+        padding: $gap;
+        border-radius: $button-border-radius;
+        margin-bottom: $gap;
+
+        input {
+            @include form-input;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    // Button group
+    .button-group {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: $gap;
+    }
+
+    // Button styles
+    .edit-btn {
+        @include button-base;
+        background-color: #4CAF50;
+
+        &:hover:not(:disabled) {
+            background-color: darken(#4CAF50, 10%);
+        }
+    }
+
+    .delete-btn {
+        @include button-base;
+        background-color: $button-hover-bg;
+
+        &:hover:not(:disabled) {
+            background-color: darken($button-hover-bg, 10%);
+        }
+    }
+
+    .save-btn {
+        @include button-base;
+        background-color: #4CAF50;
+
+        &:hover:not(:disabled) {
+            background-color: darken(#4CAF50, 10%);
+        }
+    }
+
+    .cancel-btn {
+        @include button-base;
+        background-color: #888;
+
+        &:hover:not(:disabled) {
+            background-color: darken(#888, 10%);
+        }
+    }
+}

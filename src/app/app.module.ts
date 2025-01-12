@@ -7,11 +7,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { RouterLink } from '@angular/router';
 import { SellerAuthComponent } from './seller-auth/seller-auth.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SellerHomeComponent } from './seller-home/seller-home.component';
 import { provideHttpClient } from '@angular/common/http';
-import { SellerProductCategoryComponent } from './components/seller-product-category/seller-product-category.component';
+import { SellerCategorySectionComponent } from './components/seller-category-section/seller-category-section.component';
 import { SellerProductListComponent } from './components/seller-product-list/seller-product-list.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,9 @@ import { SellerProductListComponent } from './components/seller-product-list/sel
     HomeComponent,
     SellerAuthComponent,
     SellerHomeComponent,
-    SellerProductCategoryComponent,
-    SellerProductListComponent
+    SellerCategorySectionComponent,
+    SellerProductListComponent,
+    ProductFormComponent,
   ],
   imports: [
     BrowserModule,

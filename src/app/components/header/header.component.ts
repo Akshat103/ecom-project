@@ -5,28 +5,29 @@ import { DataService } from '../../services/data/data.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  loginDataService = inject(DataService);
-  isLoggedIn = computed(() => this.loginDataService.isLoggedIn());
-  isSeller = computed(() => this.loginDataService.isSeller());
-  constructor(private route: Router) { }
+  private loginDataService = inject(DataService);
+  logInData = computed(() => this.loginDataService.getLogInData()());
+
+  constructor(private router: Router) {}
 
   logOutHandler() {
     this.loginDataService.resetData();
-    this.route.navigate(['/']);
+    this.router.navigate(['/']);
   }
 
   ngOnInit(): void {
-    this.route.events.subscribe((val: Event) => {
-      if (val instanceof NavigationEnd &&
-        val.url &&
-        (localStorage.getItem('loginToken') === 'true') &&
-        val.url.includes('seller')
+    this.router.events.subscribe((event: Event) => {
+      if (
+        event instanceof NavigationEnd &&
+        event.url &&
+        localStorage.getItem('access_token') === 'true' &&
+        event.url.includes('seller')
       ) {
-        console.log("In seller");
+        console.log('In seller');
       }
-    })
+    });
   }
 }

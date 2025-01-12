@@ -1,34 +1,32 @@
 <nav class="navbar__container">
-    <div class="nav-content">
-        <h1 routerLink="/">E-Commerce</h1>
+  <div class="nav-content">
+    <h1 routerLink="/">E-Commerce</h1>
 
-        <!-- Search Bar -->
-        <div class="search__container">
-            <input type="text" placeholder="Search for products" id="search-input">
-            <button type="button" id="search-button">Search</button>
-        </div>
-
-        <!-- Menu Container -->
-        <div class="menu__container">
-            <div class="menu-user-options">
-                <ul>
-                    @if (!isLoggedIn()) {
-                        <li routerLink="/seller-home">Seller</li>
-                        <li><a href="#"><button type="button">Log in</button></a></li>
-                        <li><a href="#"><button type="button">Cart</button></a></li>
-                    }
-                    @else{
-                        @if (isSeller()) {
-                            <li routerLink="/seller-home">Seller</li>
-                            <li><button type="button" (click)="logOutHandler()">Log Out</button></li>
-                        }
-                        @else {
-                            <li><button type="button" (click)="logOutHandler()">Log Out</button></li>
-                            <li><a href="#"><button type="button">Cart</button></a></li>
-                        }
-                    }
-                </ul>
-            </div>
-        </div>
+    <!-- Search Bar -->
+    <div class="search__container">
+      <input type="text" placeholder="Search for products" id="search-input" />
+      <button type="button" id="search-button">Search</button>
     </div>
+
+    <!-- Menu Container -->
+    <div class="menu__container">
+      <div class="menu-user-options">
+        <ul>
+          @if (!logInData().loggedIn) {
+            <li routerLink="/seller-home">Seller</li>
+            <li><a routerLink="/login"><button type="button">Log in</button></a></li>
+            <li><a href="#"><button type="button">Cart</button></a></li>
+          } @else {
+            @if (logInData().seller) {
+              <li routerLink="/seller-home">Seller</li>
+              <li><button type="button" (click)="logOutHandler()">Log Out</button></li>
+            } @else {
+              <li><button type="button" (click)="logOutHandler()">Log Out</button></li>
+              <li><a href="#"><button type="button">Cart</button></a></li>
+            }
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
 </nav>

@@ -2,7 +2,6 @@ import { Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SellerService } from '../services/seller/seller.service';
-import { Seller } from '../model/seller.model';
 import { DataService } from '../services/data/data.service';
 import { take } from 'rxjs';
 
@@ -82,6 +81,7 @@ export class SellerAuthComponent {
         },
         error: (error) => {
           console.error('Signup failed:', error);
+          alert(error.error.message);
         }
       });
     }

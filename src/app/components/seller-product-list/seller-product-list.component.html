@@ -1,0 +1,43 @@
+<div class="product-list-container">
+    <form [formGroup]="filterForm" class="filters">
+        <input formControlName="title" placeholder="Search by title" class="filter-input">
+
+        <div class="price-filters">
+            <input type="number" formControlName="price_min" placeholder="Min price" class="filter-input">
+            <input type="number" formControlName="price_max" placeholder="Max price" class="filter-input">
+        </div>
+
+        <select formControlName="categoryId" class="filter-select">
+            <option [ngValue]="null">All Categories</option>
+            <option *ngFor="let category of categories" [ngValue]="category.id">
+                {{category.name}}
+            </option>
+        </select>
+    </form>
+
+    <div class="products-grid">
+        <div *ngFor="let product of products" class="product-card">
+            <img [src]="product.images[0]" [alt]="product.title" class="product-image">
+            <h3>{{product.title}}</h3>
+            <p>{{product.price | currency}}</p>
+            <div class="product-actions">
+                <button (click)="editProduct(product)" class="edit-button">Edit</button>
+                <button (click)="deleteProduct(product.id)" class="delete-button">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="" class="no-products">
+        No products found matching your criteria.
+    </div>
+
+    <div class="pagination">
+        <button [disabled]="currentOffset === 0" (click)="previousPage()" class="pagination-button">
+            Previous
+        </button>
+        <span>Page {{currentPage}}</span>
+        <button (click)="nextPage()" class="pagination-button" [disabled]="products.length < limit">
+            Next
+        </button>
+    </div>
+</div>

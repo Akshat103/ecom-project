@@ -1,0 +1,76 @@
+@import '../../../variables';
+
+.product-list-container {
+    padding: 1rem;
+    background-color: $primary-bg;
+}
+
+.filters {
+    display: flex;
+    gap: $gap;
+    margin-bottom: $gap;
+}
+
+.filter-input,
+.filter-select {
+    padding: $button-padding;
+    border: 1px solid $border-color;
+    border-radius: $button-border-radius;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: $gap;
+}
+
+.product-card {
+    padding: $gap;
+    background-color: $secondary-bg;
+    border-radius: $button-border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: $button-border-radius;
+}
+
+.product-actions {
+    display: flex;
+    gap: $gap;
+    margin-top: $gap;
+}
+
+.edit-button,
+.delete-button,
+.pagination-button {
+    padding: $button-padding;
+    border: none;
+    border-radius: $button-border-radius;
+    background-color: $button-bg;
+    color: $button-text-color;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: $button-hover-bg;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    cursor: not-allowed;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $gap;
+    margin-top: $gap;
+}

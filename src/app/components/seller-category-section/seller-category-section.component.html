@@ -1,0 +1,99 @@
+<!-- seller-category-section.component.html -->
+<div class="category-section">
+    <div class="header">
+        <div class="search-container">
+            <form [formGroup]="searchForm">
+                <input type="text" formControlName="searchTerm" placeholder="Search categories..." />
+            </form>
+        </div>
+        <button (click)="showCreateForm = true" class="create-btn">
+            Create New Category
+        </button>
+    </div>
+
+    @if (showCreateForm) {
+    <div class="create-form">
+        <h3>Create New Category</h3>
+        <form [formGroup]="createForm">
+            <div class="form-group">
+                <input type="text" formControlName="name" placeholder="Category name" />
+                @if (hasError(createForm, 'name', 'required')) {
+                <span class="error-message">Name is required</span>
+                }
+                @if (hasError(createForm, 'name', 'minlength')) {
+                <span class="error-message">Name must be at least 3 characters</span>
+                }
+            </div>
+
+            <div class="form-group">
+                <input type="text" formControlName="image" placeholder="Image URL" />
+                @if (hasError(createForm, 'image', 'required')) {
+                <span class="error-message">Image URL is required</span>
+                }
+                @if (hasError(createForm, 'image', 'pattern')) {
+                <span class="error-message">Please enter a valid URL</span>
+                }
+            </div>
+
+            <div class="button-group">
+                <button (click)="createCategory()" class="save-btn" [disabled]="createForm.invalid">
+                    Save
+                </button>
+                <button (click)="showCreateForm = false; createForm.reset()" class="cancel-btn">
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+    }
+
+    <div class="categories-list">
+        @for (category of filteredCategories; track category.id) {
+        <div class="category-card">
+            @if (editingCategory?.id === category.id) {
+            <div class="edit-form">
+                <form [formGroup]="editForm">
+                    <div class="form-group">
+                        <input type="text" formControlName="name" placeholder="Category name" />
+                        @if (hasError(editForm, 'name', 'required')) {
+                        <span class="error-message">Name is required</span>
+                        }
+                        @if (hasError(editForm, 'name', 'minlength')) {
+                        <span class="error-message">Name must be at least 3 characters</span>
+                        }
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="image" placeholder="Image URL" />
+                        @if (hasError(editForm, 'image', 'required')) {
+                        <span class="error-message">Image URL is required</span>
+                        }
+                        @if (hasError(editForm, 'image', 'pattern')) {
+                        <span class="error-message">Please enter a valid URL</span>
+                        }
+                    </div>
+
+                    <div class="button-group">
+                        <button (click)="updateCategory()" class="save-btn" [disabled]="editForm.invalid">
+                            Save
+                        </button>
+                        <button (click)="cancelEdit()" class="cancel-btn">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+            } @else {
+            <div class="category-content">
+                <img [src]="category.image" [alt]="category.name" />
+                <h3>{{ category.name }}</h3>
+                <div class="button-group">
+                    <button (click)="startEdit(category)" class="edit-btn">Edit</button>
+                    <button (click)="deleteCategory(category.id!)" class="delete-btn">Delete</button>
+                </div>
+            </div>
+            }
+        </div>
+        }
+    </div>
+</div>
