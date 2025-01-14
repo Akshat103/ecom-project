@@ -1,0 +1,48 @@
+<div class="seller-uploads">
+    <div [formGroup]="uploadDocFormGroup" class="form-container">
+        <div class="upload-group">
+            <div class="form-group">
+                <label for="businessCert">Business Certificate</label>
+                <input id="businessCert" type="file" (change)="onFileChange($event, 'businessCert')" />
+                <div *ngIf="uploadDocFormGroup.get('businessCert')?.invalid && uploadDocFormGroup.get('businessCert')?.touched"
+                    class="error-message">
+                    <small *ngIf="uploadDocFormGroup.get('businessCert')?.hasError('required')">Business Certificate is
+                        required.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gstCert">GST Certificate</label>
+                <input id="gstCert" type="file" (change)="onFileChange($event, 'gstCert')" />
+            </div>
+            <div class="form-group">
+                <label for="bankPassbook">Bank Passbook</label>
+                <input id="bankPassbook" type="file" (change)="onFileChange($event, 'bankPassbook')" />
+                <div *ngIf="uploadDocFormGroup.get('bankPassbook')?.invalid && uploadDocFormGroup.get('bankPassbook')?.touched"
+                    class="error-message">
+                    <small *ngIf="uploadDocFormGroup.get('bankPassbook')?.hasError('required')">Bank Passbook is
+                        required.</small>
+                </div>
+            </div>
+        </div>
+        <div class="upload-group">
+            <div class="form-group">
+                <label for="addressProof">Address Proof</label>
+                <input id="addressProof" type="file" (change)="onFileChange($event, 'addressProof')" />
+                <div *ngIf="uploadDocFormGroup.get('addressProof')?.invalid && uploadDocFormGroup.get('addressProof')?.touched"
+                    class="error-message">
+                    <small *ngIf="uploadDocFormGroup.get('addressProof')?.hasError('required')">Address Proof is
+                        required.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ownerIdProof">Owner ID Proof</label>
+                <input id="ownerIdProof" type="file" (change)="onFileChange($event, 'ownerIdProof')" />
+                <div *ngIf="uploadDocFormGroup.get('ownerIdProof')?.invalid && uploadDocFormGroup.get('ownerIdProof')?.touched"
+                    class="error-message">
+                    <small *ngIf="uploadDocFormGroup.get('ownerIdProof')?.hasError('required')">Owner ID Proof is
+                        required.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

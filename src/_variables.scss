@@ -1,6 +1,6 @@
 // Colors
-$primary-bg: #f8f9fa; 
-$secondary-bg: #e9ecef; 
+$primary-bg: #f8f9fa;
+$secondary-bg: #e9ecef;
 $button-bg: #ff6b6b;
 $button-hover-bg: #d9534f;
 $border-color: #343a40;
@@ -9,5 +9,24 @@ $button-text-color: #ffffff;
 // Spacing & Sizing
 $button-border-radius: 5px;
 $button-padding: 0.3rem 0.5rem;
-$font-size: 1rem;
+$font-size: 0.9rem;
 $gap: 1rem;
+
+// Form Styling
+$form-background: $primary-bg;
+$form-border-radius: 8px;
+$form-padding: 1.5rem;
+$form-gap: $gap;
+$form-label-color: $border-color;
+$form-input-border: 1px solid $border-color;
+$form-input-focus-border: 2px solid $button-bg;
+
+// Error Message Styling
+$error-message-color: #e74c3c;
+$error-message-font-size: 0.875rem;
+$error-message-margin: 0.5rem 0 0 0;
+
+// Button Styling (If you add a submit button)
+$button-font-size: $font-size;
+$button-font-weight: bold;
+$button-hover-text-color: #fff;

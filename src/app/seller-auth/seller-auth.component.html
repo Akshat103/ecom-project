@@ -6,7 +6,7 @@
             <div class="seller-form-group">
                 <label for="name">Name</label>
                 <input type="text" id="signup_name" formControlName="name" placeholder="Enter name">
-                @if (signupForm.get('name')?.invalid && signupForm.get('name')?.touched) {
+                @if (signupForm.get('name')?.touched && signupForm.get('name')?.invalid) {
                 <div class="error">
                     Name is required (min. 3 characters)
                 </div>
@@ -15,7 +15,7 @@
             <div class="seller-form-group">
                 <label for="email">Email</label>
                 <input type="text" id="signup_email" formControlName="email" placeholder="Enter email">
-                @if (signupForm.get('email')?.invalid && signupForm.get('email')?.touched) {
+                @if (signupForm.get('email')?.touched && signupForm.get('email')?.invalid) {
                 <div class="error">
                     Enter a valid email.
                 </div>

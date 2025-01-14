@@ -19,6 +19,7 @@
           } @else {
             @if (logInData().seller) {
               <li routerLink="/seller-home">Seller</li>
+              <li routerLink="/seller-registration">Registration</li>
               <li><button type="button" (click)="logOutHandler()">Log Out</button></li>
             } @else {
               <li><button type="button" (click)="logOutHandler()">Log Out</button></li>

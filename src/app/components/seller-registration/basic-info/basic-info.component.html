@@ -1,0 +1,77 @@
+<div class="basic-info">
+    <div [formGroup]="basicInfoFormGroup" class="form-container">
+        <div class="basic-info">
+            <div class="form-group">
+                <label for="sellerName">Seller Name</label>
+                <input id="sellerName" formControlName="sellerName" type="text" />
+                <div *ngIf="basicInfoFormGroup.get('sellerName')?.invalid && basicInfoFormGroup.get('sellerName')?.touched"
+                    class="error-message">
+                    <small *ngIf="basicInfoFormGroup.get('sellerName')?.hasError('required')">Seller Name is
+                        required.</small>
+                    <small *ngIf="basicInfoFormGroup.get('sellerName')?.hasError('minlength')">Seller Name must be at
+                        least
+                        3
+                        characters long.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="businessName">Business Name</label>
+                <input id="businessName" formControlName="businessName" type="text" />
+                <div *ngIf="basicInfoFormGroup.get('businessName')?.invalid && basicInfoFormGroup.get('businessName')?.touched"
+                    class="error-message">
+                    <small *ngIf="basicInfoFormGroup.get('businessName')?.hasError('required')">Business Name is
+                        required.</small>
+                    <small *ngIf="basicInfoFormGroup.get('businessName')?.hasError('minlength')">Business Name must be
+                        at
+                        least
+                        3 characters long.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" formControlName="email" type="email" />
+                <div *ngIf="basicInfoFormGroup.get('email')?.invalid && basicInfoFormGroup.get('email')?.touched"
+                    class="error-message">
+                    <small *ngIf="basicInfoFormGroup.get('email')?.hasError('required')">Email is required.</small>
+                    <small *ngIf="basicInfoFormGroup.get('email')?.hasError('email')">Please enter a valid email
+                        address.</small>
+                </div>
+            </div>
+        </div>
+        <div class="basic-info">
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label>
+                <input id="phoneNumber" formControlName="phoneNumber" type="number" />
+                <div *ngIf="basicInfoFormGroup.get('phoneNumber')?.invalid && basicInfoFormGroup.get('phoneNumber')?.touched"
+                    class="error-message">
+                    <small *ngIf="basicInfoFormGroup.get('phoneNumber')?.hasError('required')">Phone Number is
+                        required.</small>
+                    <small *ngIf="basicInfoFormGroup.get('phoneNumber')?.hasError('pattern')">Phone Number must be a
+                        valid
+                        10-digit number.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="alternateContact">Alternate Contact Number</label>
+                <input id="alternateContact" formControlName="alternateContact" type="number" />
+                <div *ngIf="basicInfoFormGroup.get('alternateContact')?.invalid && basicInfoFormGroup.get('alternateContact')?.touched"
+                    class="error-message">
+                    <small *ngIf="basicInfoFormGroup.get('alternateContact')?.hasError('pattern')">Alternate Contact
+                        must be
+                        a
+                        valid 10-digit number.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="businessWebsite">Business Website</label>
+                <input id="businessWebsite" formControlName="businessWebsite" type="text" />
+                <div *ngIf="basicInfoFormGroup.get('businessWebsite')?.invalid && basicInfoFormGroup.get('businessWebsite')?.touched"
+                    class="error-message">
+                    <small *ngIf="basicInfoFormGroup.get('businessWebsite')?.hasError('pattern')">Please enter a valid
+                        website
+                        URL (e.g., http://www.example.com).</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+@import '../../variables';
+
+.seller__registration_form_container {
+    padding: 2rem;
+
+    .seller-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 2px $border-color solid;
+        border-radius: $button-border-radius;
+        padding: 0.5rem;
+        background-color: $primary-bg;
+
+        >h4 {
+            margin: 0.3rem;
+        }
+    }
+
+    .navigation-buttons {
+        display: flex;
+        justify-content: space-between;
+
+        >button {
+            border: none;
+            border-radius: $button-border-radius;
+            background-color: $button-bg;
+            color: $button-text-color;
+            padding: $button-padding;
+            margin: 1rem 2rem;
+
+            &:disabled {
+                background-color: $secondary-bg;
+                color: #000;
+            }
+        }
+    }
+
+    ::ng-deep .form-group {
+        margin-bottom: $gap;
+
+        label {
+            font-size: $font-size;
+            color: $form-label-color;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.2rem;
+            font-size: $font-size;
+            border: $form-input-border;
+            border-radius: 5px;
+            background-color: $secondary-bg;
+            color: $border-color;
+
+            &:focus {
+                outline: none;
+                border: $form-input-focus-border;
+                background-color: #fff;
+            }
+
+            &.ng-invalid.ng-touched {
+                border-color: $error-message-color;
+            }
+        }
+
+        .error-message {
+            color: $error-message-color;
+            font-size: $error-message-font-size;
+            margin-top: $error-message-margin;
+        }
+
+    }
+
+    ::ng-deep .form-container {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .submitButton {
+        background-color: $button-bg;
+        color: $button-text-color;
+        border: none;
+        padding: $button-padding;
+        font-size: $button-font-size;
+        font-weight: $button-font-weight;
+        border-radius: $button-border-radius;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $button-hover-bg;
+            color: $button-hover-text-color;
+        }
+    }
+
+}
+
+
+.form-container {
+    display: flex;
+    gap: 2rem;
+}

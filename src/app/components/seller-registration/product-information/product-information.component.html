@@ -1,0 +1,36 @@
+<div class="seller-product-information">
+    <div [formGroup]="productInfoFormGroup" class="form-container">
+        <div class="product-info">
+            <div class="form-group">
+                <label for="primaryCategory">Primary Category</label>
+                <input id="primaryCategory" formControlName="primaryCategory" type="text" />
+                <div *ngIf="productInfoFormGroup.get('primaryCategory')?.invalid && productInfoFormGroup.get('primaryCategory')?.touched"
+                    class="error-message">
+                    <small *ngIf="productInfoFormGroup.get('primaryCategory')?.hasError('required')">Primary Category is
+                        required.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="secondaryCategories">Secondary Categories</label>
+                <select id="secondaryCategories" formControlName="secondaryCategories" multiple>
+                    <option *ngFor="let category of availableCategories" [value]="category">{{ category }}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="product-info">
+            <div class="form-group">
+                <label for="salesVolume">Sales Volume</label>
+                <input id="salesVolume" formControlName="salesVolume" type="number" />
+                <div *ngIf="productInfoFormGroup.get('salesVolume')?.invalid && productInfoFormGroup.get('salesVolume')?.touched"
+                    class="error-message">
+                    <small *ngIf="productInfoFormGroup.get('salesVolume')?.hasError('required')">Sales Volume is
+                        required.</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

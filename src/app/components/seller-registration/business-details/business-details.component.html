@@ -1,0 +1,104 @@
+<div class="seller-business-details">
+    <div [formGroup]="businessDeatilsFormGroup" class="form-container">
+        <div class="business-details">
+            <div class="form-group">
+                <label for="businessType">Business Type</label>
+                <input id="businessType" formControlName="businessType" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('businessType')?.invalid && businessDeatilsFormGroup.get('businessType')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('businessType')?.hasError('required')">Business Type is
+                        required.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gstNumber">GST Number</label>
+                <input id="gstNumber" formControlName="gstNumber" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('gstNumber')?.invalid && businessDeatilsFormGroup.get('gstNumber')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('gstNumber')?.hasError('pattern')">Please enter a valid
+                        GST Number (15 alphanumeric characters).</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="panCard">PAN Card</label>
+                <input id="panCard" formControlName="panCard" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('panCard')?.invalid && businessDeatilsFormGroup.get('panCard')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('panCard')?.hasError('required')">PAN Card is
+                        required.</small>
+                    <small *ngIf="businessDeatilsFormGroup.get('panCard')?.hasError('pattern')">Please enter a valid PAN
+                        Card (10 alphanumeric characters).</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="aadharCard">Aadhar Card</label>
+                <input id="aadharCard" formControlName="aadharCard" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('aadharCard')?.invalid && businessDeatilsFormGroup.get('aadharCard')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('aadharCard')?.hasError('pattern')">Please enter a valid
+                        Aadhar Card (12 numeric digits).</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="registrationNumber">Registration Number</label>
+                <input id="registrationNumber" formControlName="registrationNumber" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('registrationNumber')?.invalid && businessDeatilsFormGroup.get('registrationNumber')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('registrationNumber')?.hasError('required')">Registration
+                        Number is required.</small>
+                </div>
+            </div>
+        </div>
+        <div class="business-details">
+            <div class="form-group">
+                <label for="businessAddress">Business Address</label>
+                <input id="businessAddress" formControlName="businessAddress" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('businessAddress')?.invalid && businessDeatilsFormGroup.get('businessAddress')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('businessAddress')?.hasError('required')">Business
+                        Address is required.</small>
+                    <small *ngIf="businessDeatilsFormGroup.get('businessAddress')?.hasError('minlength')">Business
+                        Address must be at least 10 characters long.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input id="country" formControlName="country" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('country')?.invalid && businessDeatilsFormGroup.get('country')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('country')?.hasError('required')">Country is
+                        required.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <input id="state" formControlName="state" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('state')?.invalid && businessDeatilsFormGroup.get('state')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('state')?.hasError('required')">State is
+                        required.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input id="city" formControlName="city" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('city')?.invalid && businessDeatilsFormGroup.get('city')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('city')?.hasError('required')">City is required.</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="postalCode">Postal Code</label>
+                <input id="postalCode" formControlName="postalCode" type="text" />
+                <div *ngIf="businessDeatilsFormGroup.get('postalCode')?.invalid && businessDeatilsFormGroup.get('postalCode')?.touched"
+                    class="error-message">
+                    <small *ngIf="businessDeatilsFormGroup.get('postalCode')?.hasError('required')">Postal Code is
+                        required.</small>
+                    <small *ngIf="businessDeatilsFormGroup.get('postalCode')?.hasError('pattern')">Postal Code must be a
+                        valid 6-digit number.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

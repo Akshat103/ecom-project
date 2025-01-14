@@ -1,0 +1,45 @@
+<div class="seller__registration_form_container">
+    <div class="seller-form" [formGroup]="sellerForm">
+        @switch (currentStep) {
+        @case (0) {
+        <h4>Basic Information</h4>
+        <app-basic-info [basicInfoFormGroup]="getStepFormGroup('basicInfo')"></app-basic-info>
+        }
+        @case (1) {
+        <h4>Business Details</h4>
+        <app-business-details [businessDeatilsFormGroup]="getStepFormGroup('businessDetails')"></app-business-details>
+        }
+        @case (2) {
+        <h4>Bank Details</h4>
+        <app-bank-details [bankDetailsFormGroup]="getStepFormGroup('bankDetails')"></app-bank-details>
+        }
+        @case (3) {
+        <h4>Upload Documents</h4>
+        <app-uploads [uploadDocFormGroup]="getStepFormGroup('uploads')"></app-uploads>
+        }
+        @case (4) {
+        <h4>Product Information</h4>
+        <app-product-information [productInfoFormGroup]="getStepFormGroup('productInfo')"></app-product-information>
+        }
+        @case (5) {
+        <h4>Shipping Logistics</h4>
+        <app-shipping-logistics></app-shipping-logistics>
+        }
+        @case (6) {
+        <h4>Additional Fields</h4>
+        <app-additional-fields></app-additional-fields>
+        }
+        @default {
+        <p>Form not available.</p>
+        }
+        }
+    </div>
+    <div class="navigation-buttons">
+        <button (click)="previousHandler()" [disabled]="currentStep === 0">Previous</button>
+        @if (currentStep === steps.length - 1) {
+        <button class="submitButton" (click)="onSubmit()">Submit</button>
+        } @else {
+        <button (click)="nextHandler()" [disabled]="currentStep === steps.length - 1">Next</button>
+        }
+    </div>
+</div>

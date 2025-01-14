@@ -1,0 +1,71 @@
+<div class="seller-bank-details">
+    <div [formGroup]="bankDetailsFormGroup" class="form-container">
+        <div class="bank-details">
+            <div class="form-group">
+                <label for="accountHolderName">Account Holder Name</label>
+                <input id="accountHolderName" formControlName="accountHolderName" type="text" />
+                <div *ngIf="bankDetailsFormGroup.get('accountHolderName')?.invalid && bankDetailsFormGroup.get('accountHolderName')?.touched"
+                    class="error-message">
+                    <small *ngIf="bankDetailsFormGroup.get('accountHolderName')?.hasError('required')">Account Holder
+                        Name is required.</small>
+                    <small *ngIf="bankDetailsFormGroup.get('accountHolderName')?.hasError('minlength')">Must be at least
+                        3 characters long.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="bankName">Bank Name</label>
+                <input id="bankName" formControlName="bankName" type="text" />
+                <div *ngIf="bankDetailsFormGroup.get('bankName')?.invalid && bankDetailsFormGroup.get('bankName')?.touched"
+                    class="error-message">
+                    <small *ngIf="bankDetailsFormGroup.get('bankName')?.hasError('required')">Bank Name is
+                        required.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="accountNumber">Account Number</label>
+                <input id="accountNumber" formControlName="accountNumber" type="text" />
+                <div *ngIf="bankDetailsFormGroup.get('accountNumber')?.invalid && bankDetailsFormGroup.get('accountNumber')?.touched"
+                    class="error-message">
+                    <small *ngIf="bankDetailsFormGroup.get('accountNumber')?.hasError('required')">Account Number is
+                        required.</small>
+                    <small *ngIf="bankDetailsFormGroup.get('accountNumber')?.hasError('pattern')">Enter a valid 8-18
+                        digit account number.</small>
+                </div>
+            </div>
+        </div>
+        <div class="bank-details">
+            <div class="form-group">
+                <label for="ifscCode">IFSC Code</label>
+                <input id="ifscCode" formControlName="ifscCode" type="text" />
+                <div *ngIf="bankDetailsFormGroup.get('ifscCode')?.invalid && bankDetailsFormGroup.get('ifscCode')?.touched"
+                    class="error-message">
+                    <small *ngIf="bankDetailsFormGroup.get('ifscCode')?.hasError('required')">IFSC Code is
+                        required.</small>
+                    <small *ngIf="bankDetailsFormGroup.get('ifscCode')?.hasError('pattern')">Enter a valid 11-character
+                        IFSC code.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="branchAddress">Branch Address</label>
+                <input id="branchAddress" formControlName="branchAddress" type="text" />
+                <div *ngIf="bankDetailsFormGroup.get('branchAddress')?.invalid && bankDetailsFormGroup.get('branchAddress')?.touched"
+                    class="error-message">
+                    <small *ngIf="bankDetailsFormGroup.get('branchAddress')?.hasError('required')">Branch Address is
+                        required.</small>
+                    <small *ngIf="bankDetailsFormGroup.get('branchAddress')?.hasError('minlength')">Must be at least 5
+                        characters long.</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="upiId">UPI ID (Optional)</label>
+                <input id="upiId" formControlName="upiId" type="text" />
+            </div>
+        </div>
+
+    </div>
+
+</div>
