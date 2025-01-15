@@ -92,27 +92,16 @@ export class ProductInformation {
 }
 
 export class ShippingLogistics {
-    shippingPartners?: string[];
+    shippingPartners?: { name: string, region: string }[];
     selfShipping: boolean = false;
     returnAddress?: string;
-    warehouses: string[] = [];
+    warehouses: { name: string, location: string }[] = [];
 
     public isCompleted(): boolean {
         return !!(
             this.selfShipping !== undefined &&
             this.warehouses.length > 0
         );
-    }
-}
-
-export class CustomField {
-    fieldName: string = "";
-    fieldType: string = "";
-    isRequired: boolean = false;
-    value?: any;
-
-    public isCompleted(): boolean {
-        return this.isRequired ? !!this.value : true;
     }
 }
 
@@ -123,40 +112,11 @@ export class SellerRegistrationData {
     uploads: DocumentUploads = new DocumentUploads();
     productInfo: ProductInformation = new ProductInformation();
     shippingLogistics: ShippingLogistics = new ShippingLogistics();
-    additionalFields: CustomField[] = [];
 
     constructor(data?: Partial<SellerRegistrationData>) {
         if (data) {
             Object.assign(this, data);
         }
-    }
-
-    public isBasicInfoComplete(): boolean {
-        return this.basicInfo.isCompleted();
-    }
-
-    public isBusinessDetailsComplete(): boolean {
-        return this.businessDetails.isCompleted();
-    }
-
-    public isBankDetailsComplete(): boolean {
-        return this.bankDetails.isCompleted();
-    }
-
-    public isUploadsComplete(): boolean {
-        return this.uploads.isCompleted();
-    }
-
-    public isProductInfoComplete(): boolean {
-        return this.productInfo.isCompleted();
-    }
-
-    public isShippingLogisticsComplete(): boolean {
-        return this.shippingLogistics.isCompleted();
-    }
-
-    public isAdditionalFieldsComplete(): boolean {
-        return this.additionalFields.every(field => field.isCompleted());
     }
 
     public toJSON(): object {
@@ -173,7 +133,6 @@ export class SellerRegistrationData {
             },
             productInfo: this.productInfo,
             shippingLogistics: this.shippingLogistics,
-            additionalFields: this.additionalFields
         };
     }
 }

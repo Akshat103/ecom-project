@@ -1,0 +1,46 @@
+.seller-shipping-logistics {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+
+    .shipping-logistics {
+        max-width: 550px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .self-shipping-check {
+        display: flex;
+        margin-bottom: 3rem;
+    }
+
+    .dynamic-container {
+        width: inherit;
+
+        .dynamic-requirement {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem;
+            align-items: center;
+
+            .requirement-input {
+                display: grid;
+            }
+        }
+    }
+
+    .shipping-label,
+    .warehouse-label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    input[type="text"] {
+        max-width: 480px;
+    }
+}

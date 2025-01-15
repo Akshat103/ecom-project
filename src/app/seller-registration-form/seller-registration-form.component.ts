@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SellerRegistrationService } from '../services/seller-registration/seller-registration.service';
-import { SellerRegistrationData } from '../model/seller-registration.model';
+import { SellerRegistrationData, } from '../model/seller-registration.model';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -20,8 +20,7 @@ export class SellerRegistrationFormComponent implements OnInit, OnDestroy {
     { id: 'bankDetails', label: 'Bank Details' },
     { id: 'uploads', label: 'Document Uploads' },
     { id: 'productInfo', label: 'Product Information' },
-    { id: 'shippingLogistics', label: 'Shipping & Logistics' },
-    { id: 'additionalFields', label: 'Additional Information' }
+    { id: 'shippingLogistics', label: 'Shipping & Logistics' }
   ];
 
   constructor(
@@ -87,21 +86,15 @@ export class SellerRegistrationFormComponent implements OnInit, OnDestroy {
         salesVolume: ['', Validators.required]
       }),
       shippingLogistics: this.fb.group({
-        shippingPartners: [[]],
-        selfShipping: ['', Validators.required],
-        returnAddress: ['', Validators.minLength(10)],
+        shippingPartners: this.fb.array([]),
+        selfShipping: [false, Validators.required],
+        returnAddress: ['', [Validators.required, Validators.minLength(10)]],
         warehouses: this.fb.array([])
-      }),
-      additionalFields: this.fb.array([])
-    });
-
-    this.sellerForm.valueChanges.subscribe(value => {
-      this.sellerRegistrationService.updateFormData(value);
+      })
     });
   }
 
   async onSubmit(): Promise<void> {
-    console.log(this.sellerForm.value)
     if (this.sellerForm.valid) {
       try {
         const success = await this.sellerRegistrationService.submitForm(this.sellerForm.value);
@@ -121,8 +114,7 @@ export class SellerRegistrationFormComponent implements OnInit, OnDestroy {
   }
 
   nextHandler(): void {
-    console.log(this.isCurrentStepValid())
-    if (this.currentStep < this.steps.length - 1) this.currentStep++;
+    if (this.currentStep < this.steps.length - 1 && this.isCurrentStepValid()) this.currentStep++;
   }
 
   previousHandler(): void {
@@ -131,8 +123,6 @@ export class SellerRegistrationFormComponent implements OnInit, OnDestroy {
 
   private isCurrentStepValid(): boolean {
     const currentStepGroup = this.sellerForm.get(this.steps[this.currentStep].id);
-    console.log("133: ", currentStepGroup);
-    console.log("134: ", currentStepGroup ? currentStepGroup.valid : false);
     return currentStepGroup ? currentStepGroup.valid : false;
   }
 }

@@ -13,9 +13,18 @@
 
             <div class="form-group">
                 <label for="secondaryCategories">Secondary Categories</label>
-                <select id="secondaryCategories" formControlName="secondaryCategories" multiple>
+                <select id="secondaryCategories"  id="secondaryCategories"
+                    (change)="addSecondaryCategory($event)">
                     <option *ngFor="let category of availableCategories" [value]="category">{{ category }}</option>
                 </select>
+            </div>
+
+            <div *ngIf="selectedSecondaryCategories.length">
+                <h4>Selected Secondary Categories</h4>
+                <ul>
+                    <li *ngFor="let category of selectedSecondaryCategories" (click)="removeSecondaryCategory(category)"
+                        class="remove">{{category}}[x]</li>
+                </ul>
             </div>
         </div>
 

@@ -23,11 +23,7 @@
         }
         @case (5) {
         <h4>Shipping Logistics</h4>
-        <app-shipping-logistics></app-shipping-logistics>
-        }
-        @case (6) {
-        <h4>Additional Fields</h4>
-        <app-additional-fields></app-additional-fields>
+        <app-shipping-logistics [shippingLogisticsFormGroup]="getStepFormGroup('shippingLogistics')"></app-shipping-logistics>
         }
         @default {
         <p>Form not available.</p>

@@ -1,3 +1,87 @@
 <div class="seller-shipping-logistics">
-    <p>shipping-logistics works!</p>
+    <div [formGroup]="shippingLogisticsFormGroup">
+        <div class="form-container">
+            <div class="shipping-logistics">
+                <div class="form-group self-shipping-check">
+                    <label for="selfShipping">Self Shipping</label>
+                    <input id="selfShipping" type="checkbox" formControlName="selfShipping" />
+                </div>
+                <div class="form-group">
+                    <div class="shipping-label">
+                        <label>Shipping Partners</label>
+                        <button type="button" (click)="addShippingPartner()">Add</button>
+                    </div>
+                    <div class="dynamic-container" formArrayName="shippingPartners">
+                        <div class="dynamic-requirement"
+                            *ngFor="let partner of shippingPartners.controls; let i = index" [formGroupName]="i">
+                            <div class="requirement-input">
+                                <input type="text" formControlName="name" placeholder="Partner Name" />
+                                <div *ngIf="partner.get('name')?.invalid && partner.get('name')?.touched"
+                                    class="error-message">
+                                    <small *ngIf="partner.get('name')?.hasError('required')">
+                                        Name is required.
+                                    </small>
+                                </div>
+                                <input type="text" formControlName="region" placeholder="Region" />
+                                <div *ngIf="partner.get('region')?.invalid && partner.get('region')?.touched"
+                                    class="error-message">
+                                    <small *ngIf="partner.get('region')?.hasError('required')">
+                                        Region is required.
+                                    </small>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" (click)="deleteShippingPartner(i)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="shipping-logistics">
+                <div class="form-group">
+                    <label for="returnAddress">Return Address</label>
+                    <input id="returnAddress" type="text" formControlName="returnAddress" />
+                    <div *ngIf="shippingLogisticsFormGroup.get('returnAddress')?.invalid && shippingLogisticsFormGroup.get('returnAddress')?.touched"
+                        class="error-message">
+                        <small *ngIf="shippingLogisticsFormGroup.get('returnAddress')?.hasError('minlength')">
+                            Return Address must be at least 10 characters long.
+                        </small>
+                        <small *ngIf="shippingLogisticsFormGroup.get('returnAddress')?.hasError('required')">
+                            Return Address is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="warehouse-label">
+                        <label>Warehouses</label>
+                        <button type="button" (click)="addWarehouse()">Add</button>
+                    </div>
+                    <div class="dynamic-container" formArrayName="warehouses">
+                        <div class="dynamic-requirement" *ngFor="let warehouse of warehouses.controls; let i = index"
+                            [formGroupName]="i">
+                            <div class="requirement-input">
+                                <input type="text" formControlName="name" placeholder="Warehouse Name" />
+                                <div *ngIf="warehouse.get('name')?.invalid && warehouse.get('name')?.touched"
+                                    class="error-message">
+                                    <small *ngIf="warehouse.get('name')?.hasError('required')">
+                                        Name is required.
+                                    </small>
+                                </div>
+                                <input type="text" formControlName="location" placeholder="Location" />
+                                <div *ngIf="warehouse.get('location')?.invalid && warehouse.get('location')?.touched"
+                                    class="error-message">
+                                    <small *ngIf="warehouse.get('location')?.hasError('required')">
+                                        Location is required.
+                                    </small>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" (click)="deleteWarehouse(i)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
