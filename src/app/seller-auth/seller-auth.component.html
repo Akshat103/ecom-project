@@ -23,7 +23,11 @@
             </div>
             <div class="seller-form-group">
                 <label for="password">Password</label>
-                <input type="password" id="signup_password" formControlName="password" placeholder="******">
+                <div class="password-container">
+                    <input [type]="isPasswordVisible()?'text':'password'" id="signup_password" formControlName="password" placeholder="******">
+                    <img [src]="isPasswordVisible()?'/assests/icons/hide-eye.svg':'/assests/icons/show-eye.svg'"
+                        width="24" height="24" class="toggle-password" (click)="togglePasswordVisibility()">
+                </div>
                 @if (signupForm.get('password')?.invalid && signupForm.get('password')?.touched) {
                 <div class="error">
                     Password must be at least 6 characters long
@@ -56,7 +60,7 @@
                 <div class="password-container">
                     <input [type]="isPasswordVisible()?'text':'password'" id="signin_password"
                         formControlName="password" placeholder="******">
-                    <img [src]="isPasswordVisible()?'/assests/icons/hide-svgrepo-com.svg':'/assests/icons/show-svgrepo-com.svg'"
+                    <img [src]="isPasswordVisible()?'/assests/icons/hide-eye.svg':'/assests/icons/show-eye.svg'"
                         width="24" height="24" class="toggle-password" (click)="togglePasswordVisibility()">
                 </div>
                 @if (signinForm.get('password')?.invalid && signupForm.get('password')?.touched) {
