@@ -31,15 +31,7 @@ import { BasicInfoComponent } from './components/seller-registration/basic-info/
     SellerHomeComponent,
     SellerCategorySectionComponent,
     SellerProductListComponent,
-    ProductFormComponent,
-    SellerRegistrationFormComponent,
-    BusinessDetailsComponent,
-    BankDetailsComponent,
-    UploadsComponent,
-    ProductInformationComponent,
-    ShippingLogisticsComponent,
-    AdditionalFieldsComponent,
-    BasicInfoComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,

@@ -4,13 +4,19 @@ import { HomeComponent } from './home/home.component';
 import { SellerAuthComponent } from './seller-auth/seller-auth.component';
 import { SellerHomeComponent } from './seller-home/seller-home.component';
 import { sellerAuthGuard } from './guards/seller-auth.guard';
-import { SellerRegistrationFormComponent } from './seller-registration-form/seller-registration-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'seller-auth', component: SellerAuthComponent },
   { path: 'seller-home', component: SellerHomeComponent, canActivate: [sellerAuthGuard] },
-  { path: 'seller-registration', component: SellerRegistrationFormComponent, canActivate: [sellerAuthGuard] }
+  // { path: 'seller-registration', component: SellerRegistrationFormComponent, canActivate: [sellerAuthGuard] }
+  { 
+    path: 'seller-registration', 
+    loadChildren: () => import('./seller-registration-form/seller-registration-form.module')
+      .then(m => m.SellerRegistrationFormModule),
+    canActivate: [sellerAuthGuard]
+  }
+  
 ];
 
 @NgModule({
