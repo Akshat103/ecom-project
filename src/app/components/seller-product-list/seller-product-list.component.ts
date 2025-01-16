@@ -43,7 +43,6 @@ export class SellerProductListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    // Subscribe to form changes with debounce
     this.formSubscription = this.filterForm.valueChanges
       .pipe(
         debounceTime(300),

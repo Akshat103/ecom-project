@@ -63,25 +63,42 @@
             </div>
             <div class="form-group">
                 <label for="country">Country</label>
-                <input id="country" formControlName="country" type="text" />
+                <select formControlName="country" id="country">
+                    <option value="">Select country</option>
+                    <option *ngFor="let country of countries" [value]="country.name">
+                        {{country.name}} {{country.unicodeFlag}}
+                    </option>
+                </select>
                 <div *ngIf="businessDeatilsFormGroup.get('country')?.invalid && businessDeatilsFormGroup.get('country')?.touched"
                     class="error-message">
                     <small *ngIf="businessDeatilsFormGroup.get('country')?.hasError('required')">Country is
                         required.</small>
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="state">State</label>
-                <input id="state" formControlName="state" type="text" />
+                <select formControlName="state" id="state">
+                    <option value="">Select state</option>
+                    <option *ngFor="let state of states" [value]="state.name">
+                        {{state.name}}
+                    </option>
+                </select>
                 <div *ngIf="businessDeatilsFormGroup.get('state')?.invalid && businessDeatilsFormGroup.get('state')?.touched"
                     class="error-message">
                     <small *ngIf="businessDeatilsFormGroup.get('state')?.hasError('required')">State is
                         required.</small>
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="city">City</label>
-                <input id="city" formControlName="city" type="text" />
+                <select formControlName="city" id="city">
+                    <option value="">Select city</option>
+                    <option *ngFor="let city of cities" [value]="city">
+                        {{city}}
+                    </option>
+                </select>
                 <div *ngIf="businessDeatilsFormGroup.get('city')?.invalid && businessDeatilsFormGroup.get('city')?.touched"
                     class="error-message">
                     <small *ngIf="businessDeatilsFormGroup.get('city')?.hasError('required')">City is required.</small>

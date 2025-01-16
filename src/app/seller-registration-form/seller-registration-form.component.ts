@@ -114,7 +114,7 @@ export class SellerRegistrationFormComponent implements OnInit, OnDestroy {
   }
 
   nextHandler(): void {
-    if (this.currentStep < this.steps.length - 1 && this.isCurrentStepValid()) this.currentStep++;
+    if (this.currentStep < this.steps.length - 1) this.currentStep++;
   }
 
   previousHandler(): void {
