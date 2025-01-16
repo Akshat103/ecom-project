@@ -15,6 +15,7 @@ export class SellerProductListComponent implements OnInit, OnDestroy {
   currentOffset = 0;
   limit = 10;
   currentPage = 1;
+  isFetched: boolean = false;
   private formSubscription!: Subscription;
 
   categories = [
@@ -75,9 +76,10 @@ export class SellerProductListComponent implements OnInit, OnDestroy {
     this.productService.getProducts(
       this.currentOffset,
       this.limit,
-      filters
+      filters,
     ).subscribe(products => {
       this.products = products;
+      this.isFetched = true;
     });
   }
 

@@ -20,7 +20,7 @@
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
     gap: $gap;
 }
 
@@ -31,9 +31,18 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.product-card-skeleton {
+    background-color: $secondary-bg;
+    border-radius: $button-border-radius;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 17rem;
+    width: 15rem;
+    margin: 1rem;
+}
+
 .product-image {
     width: 100%;
-    height: 200px;
+    height: 12.5rem;
     object-fit: cover;
     border-radius: $button-border-radius;
 }

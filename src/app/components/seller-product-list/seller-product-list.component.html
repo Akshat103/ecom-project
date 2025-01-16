@@ -16,16 +16,27 @@
     </form>
 
     <div class="products-grid">
-        <div *ngFor="let product of products" class="product-card">
-            <img [src]="product.images[0]" [alt]="product.title" class="product-image">
-            <h3>{{product.title}}</h3>
-            <p>{{product.price | currency}}</p>
-            <div class="product-actions">
-                <button (click)="editProduct(product)" class="edit-button">Edit</button>
-                <button (click)="deleteProduct(product.id)" class="delete-button">Delete</button>
+        <ng-container *ngIf="isFetched; else skeleton">
+            <div *ngFor="let product of products" class="product-card">
+                <img [src]="product.images[0] | validImage | async" [alt]="product.title" class="product-image">
+                <h3>{{ product.title }}</h3>
+                <p>{{ product.price | currency }}</p>
+                <div class="product-actions">
+                    <button (click)="editProduct(product)" class="edit-button">Edit</button>
+                    <button (click)="deleteProduct(product.id)" class="delete-button">Delete</button>
+                </div>
             </div>
-        </div>
+        </ng-container>
+        
+        <ng-template #skeleton>
+            <div class="product-card-skeleton"></div>
+            <div class="product-card-skeleton"></div>
+            <div class="product-card-skeleton"></div>
+            <div class="product-card-skeleton"></div>
+        </ng-template>
     </div>
+    
+
 
     <div *ngIf="" class="no-products">
         No products found matching your criteria.

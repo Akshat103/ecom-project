@@ -5,19 +5,15 @@
     gap: 1rem;
     padding: 1rem;
     justify-content: center;
-    max-height: 187vh;
     overflow: hidden;
 
     .seller-category-section {
-        flex: 1;
         max-width: 30%;
-        overflow-y: auto;
+        height: fit-content;
     }
 
     .seller-product-section {
         max-width: 70%;
-        max-height: 187vh;
-        overflow-y:visible;
     }
 
     .seller-category-section,

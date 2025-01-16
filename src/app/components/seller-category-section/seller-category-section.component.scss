@@ -1,6 +1,5 @@
 @import '../../../variables';
 
-// Mixins for common styles
 @mixin button-base {
     padding: $button-padding;
     border-radius: $button-border-radius;
@@ -25,12 +24,10 @@
     transition: border-color 0.2s ease;
 }
 
-// Main container
 .category-section {
     padding: $gap;
     background-color: $primary-bg;
 
-    // Header section
     .header {
         display: flex;
         justify-content: space-between;
@@ -39,7 +36,7 @@
 
         .search-container {
             flex: 1;
-            max-width: 400px;
+            max-width: 25rem;
             margin-right: $gap;
 
             input {
@@ -48,16 +45,19 @@
         }
 
         .create-btn {
-            @include button-base;
-            background-color: $button-bg;
+            width: 2rem;
+            height: 2rem;
+            backdrop-filter: inherit;
+            margin: 4px;
+            cursor: pointer;
 
             &:hover:not(:disabled) {
                 background-color: $button-hover-bg;
+                border-radius: 5px;
             }
         }
     }
 
-    // Form styles
     .form-group {
         margin-bottom: 1rem;
 
@@ -77,29 +77,30 @@
         display: block;
     }
 
-    // Categories grid
     .categories-list {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
         gap: $gap;
+        height: 100vh;
+        overflow-y: scroll;
     }
 
-    // Category card styles
     .category-card {
         background-color: $secondary-bg;
         border-radius: $button-border-radius;
         padding: $gap;
+        height: 17.65rem;
+        margin: 1rem;
 
         img {
+            height: 12.5rem;
             width: 100%;
-            height: 200px;
             object-fit: cover;
             border-radius: $button-border-radius;
             margin-bottom: $gap;
         }
     }
 
-    // Forms
     .create-form,
     .edit-form {
         background-color: $secondary-bg;
@@ -113,14 +114,12 @@
         }
     }
 
-    // Button group
     .button-group {
         display: flex;
         gap: 0.5rem;
         margin-top: $gap;
     }
 
-    // Button styles
     .edit-btn {
         @include button-base;
         background-color: #4CAF50;

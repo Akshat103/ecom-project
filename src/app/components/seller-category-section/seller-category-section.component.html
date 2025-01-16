@@ -6,14 +6,14 @@
                 <input type="text" formControlName="searchTerm" placeholder="Search categories..." />
             </form>
         </div>
-        <button (click)="showCreateForm = true" class="create-btn">
-            Create New Category
+        <img (click)="showCreateForm = true" class="create-btn" src="/assests/icons/add.svg" alt="add">
+        <button>
         </button>
     </div>
 
     @if (showCreateForm) {
     <div class="create-form">
-        <h3>Create New Category</h3>
+        <h3>New Category</h3>
         <form [formGroup]="createForm">
             <div class="form-group">
                 <input type="text" formControlName="name" placeholder="Category name" />
@@ -47,7 +47,7 @@
     </div>
     }
 
-    <div class="categories-list">
+    <div class="categories-list" *ngIf="isFetched; else skeleton">
         @for (category of filteredCategories; track category.id) {
         <div class="category-card">
             @if (editingCategory?.id === category.id) {
@@ -85,7 +85,7 @@
             </div>
             } @else {
             <div class="category-content">
-                <img [src]="category.image" [alt]="category.name" />
+                <img [src]="category.image | validImage | async" [alt]="category.name" />
                 <h3>{{ category.name }}</h3>
                 <div class="button-group">
                     <button (click)="startEdit(category)" class="edit-btn">Edit</button>
@@ -96,4 +96,11 @@
         </div>
         }
     </div>
+
+    <ng-template #skeleton>
+        <div class="category-card"></div>
+        <div class="category-card"></div>
+        <div class="category-card"></div>
+        <div class="category-card"></div>
+    </ng-template>
 </div>

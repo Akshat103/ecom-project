@@ -16,7 +16,6 @@ const routes: Routes = [
       .then(m => m.SellerRegistrationFormModule),
     canActivate: [sellerAuthGuard]
   }
-  
 ];
 
 @NgModule({

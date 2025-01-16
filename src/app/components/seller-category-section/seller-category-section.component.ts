@@ -17,6 +17,7 @@ export class SellerCategorySectionComponent implements OnInit {
   editForm: FormGroup;
   showCreateForm = false;
   editingCategory: Category | null = null;
+  isFetched: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -49,6 +50,7 @@ export class SellerCategorySectionComponent implements OnInit {
       next: (data) => {
         this.categories = data;
         this.filterCategories();
+        this.isFetched=true;
       },
       error: (error) => console.error('Error loading categories:', error)
     });
