@@ -9,7 +9,7 @@ import { environment } from '../../../environment/environment';
 })
 export class CategoryService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${environment.serverUrl}/categories`);

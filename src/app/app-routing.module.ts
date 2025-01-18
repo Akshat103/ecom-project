@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { SellerAuthComponent } from './seller-auth/seller-auth.component';
 import { SellerHomeComponent } from './seller-home/seller-home.component';
 import { sellerAuthGuard } from './guards/seller-auth.guard';
+import { ProductSearchComponent } from './product-search/product-search.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./seller-registration-form/seller-registration-form.module')
       .then(m => m.SellerRegistrationFormModule),
     canActivate: [sellerAuthGuard]
+  },
+  {
+    path:'product-search',
+    component:ProductSearchComponent
   }
 ];
 

@@ -1,0 +1,8 @@
+<div class="outer-container">
+    <div class="inner-container">
+        <div *ngFor="let category of categories"  class="inner-box">
+            <img [src]="category.image|validImage|async" [alt]="category.name">
+            <p>{{category.name}}</p>
+        </div>
+    </div>
+</div>

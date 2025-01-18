@@ -10,10 +10,17 @@ import { DataService } from '../../services/data/data.service';
 export class HeaderComponent implements OnInit {
   private loginDataService = inject(DataService);
   logInData = computed(() => this.loginDataService.getLogInData()());
+  searchTerm = '';
 
-  constructor(private router: Router) {}
+  search(): void {
+    if (this.searchTerm.length > 0) {
+      this.router.navigate(['/product-search'], { queryParams: { q: this.searchTerm } });
+      this.searchTerm='';
+    }
+  }
+  constructor(private router: Router) { }
 
-  logOutHandler() {
+  logOutHandler(): void {
     this.loginDataService.resetData();
     this.router.navigate(['/']);
   }

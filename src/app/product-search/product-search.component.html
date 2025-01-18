@@ -1,0 +1,26 @@
+<div class="product__search">
+    @if (isLoading) {
+    <div class="product__card_template"></div>
+    <div class="product__card_template"></div>
+    <div class="product__card_template"></div>
+    <div class="product__card_template"></div>
+    }@else{
+    <div *ngIf="products!.length > 0; else noResults">
+        <div *ngFor="let product of products" class="product__card">
+            <img [src]="product.images[0]" alt="{{ product.title }}" class="product__image" />
+            <div class="product__details">
+                <h3 class="product__title">{{ product.title }}</h3>
+                <p class="product__description">{{ product.description }}</p>
+                <div class="product__footer">
+                    <span class="product__price">${{ product.price }}</span>
+                    <button class="product__button">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #noResults>
+        <p>No products found.</p>
+    </ng-template>
+    }
+</div>

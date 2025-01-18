@@ -4,8 +4,8 @@
 
     <!-- Search Bar -->
     <div class="search__container">
-      <input type="text" placeholder="Search for products" id="search-input" />
-      <button type="button" id="search-button">Search</button>
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Search for products" id="search-input" />
+      <button type="button" id="search-button" (click)="search()">Search</button>
     </div>
 
     <!-- Menu Container -->
